@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จิจะ หมี่ไก่ฉีก - เดลิเวอรี่</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="homepage" class="page">
+        <header>
+            <img src="Logojija.png" alt="จิจะ หมี่ไก่ฉีก Logo" class="logo">
+            <h1>อร่อยกับหมี่ไก่ฉีก<br>สูตรเด็ดทางร้าน</h1>
+            <p>ความอร่อยส่งตรงถึงบ้านคุณ</p>
+            <button id="orderNowBtn">สั่งเลย!</button>
+        </header>
+
+        <section class="menu-highlight">
+            <h2>เมนูแนะนำ</h2>
+            <img src="https://via.placeholder.com/400x300?text=หมี่ไก่ฉีก" alt="เมนูหมี่ไก่ฉีก" class="menu-img">
+            <h3>หมี่ไก่ฉีก สูตรจิจะ</h3>
+            <p class="menu-desc">เส้นเหนียวนุ่ม ไก่ฉีกรสเด็ด คลุกเคล้าด้วยน้ำซอสสูตรลับ</p>
+            <p class="price">฿50</p>
+            <div class="toppings-preview">
+                <span>น้ำพริกกากหมู</span>
+            </div>
+        </section>
+    </div>
+
+    <div id="orderpage" class="page hidden">
+        <h2>สั่งหมี่ไก่ฉีก</h2>
+
+        <div class="menu-selection">
+            <h3>หมี่ไก่ฉีก (฿50/ชุด)</h3>
+            <div class="quantity-control">
+                <button id="decreaseQty">-</button>
+                <span id="quantity">1</span>
+                <button id="increaseQty">+</button>
+            </div>
+        </div>
+
+        <div class="topping-selection">
+            <h3>เลือกท็อปปิ้ง</h3>
+            <div id="toppingsContainer">
+                </div>
+        </div>
+
+
+<div class="mb-6 border-b pb-4 border-gray-200">
+    <h3 class="text-xl font-semibold mb-3">น้ำพริกกากหมู (฿10/กระปุก)</h3>
+    <div class="flex items-center justify-center space-x-4">
+        <button id="decreaseChiliQty" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-lg font-bold hover:bg-gray-300 transition-colors duration-200">-</button>
+        <span id="chiliQuantity" class="text-2xl font-bold">0</span>
+        <button id="increaseChiliQty" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-lg font-bold hover:bg-gray-300 transition-colors duration-300">+</button>
+    </div>
+</div>
+
+        <div class="order-summary">
+            <p>ยอดรวม: <span id="totalPrice">฿50</span></p>
+        </div>
+
+        <div class="customer-form">
+            <h3>ข้อมูลจัดส่ง</h3>
+            <input type="text" id="customerName" placeholder="ชื่อ-นามสกุล" required>
+            <input type="tel" id="customerPhone" placeholder="เบอร์โทรศัพท์" required>
+            <textarea id="customerAddress" rows="3" placeholder="ที่อยู่จัดส่ง" required></textarea>
+        </div>
+
+        <div class="payment-method">
+            <h3>วิธีชำระเงิน</h3>
+            <label>
+                <input type="radio" name="paymentMethod" value="cash" checked> ชำระเงินปลายทาง
+            </label>
+            <label>
+                <input type="radio" name="paymentMethod" value="transfer"> โอนเงิน (QR Code จะแสดงหลังยืนยัน)
+            </label>
+        </div>
+
+        <button id="confirmOrderBtn">ยืนยันสั่งซื้อ</button>
+    </div>
+
+    <div id="confirmationpage" class="page hidden">
+        <h2>ขอบพระคุณลูกค้าสำหรับที่สั่งซื้อค่ะ!</h2>
+        <div id="qrCodeDisplay" class="hidden">
+            <p>กรุณาโอนเงินมาที่:</p>
+            <img src="qr-code.png" alt="QR Code สำหรับโอนเงิน" class="qr-code-img">
+            <p>สแกน QR Code เพื่อโอนเงิน</p>
+        </div>
+        <p>คำสั่งซื้อของคุณจะถูกจัดส่งถึงโดยเร็วที่สุดค่ะ</p>
+        <button id="backToHomeBtn">กลับสู่หน้าแรก</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
