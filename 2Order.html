@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สั่งอาหาร - จิจะ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Anuphan', sans-serif;
+            background-color: #FFF8E1; /* สีครีม */
+            color: #4B3832; /* สีข้อความเข้ม */
+        }
+        .btn-quantity {
+            background-color: #5D9C59; /* สีเขียวม้า */
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-quantity:hover {
+            background-color: #4A8446;
+        }
+        .btn-quantity:disabled {
+            background-color: #A0A0A0;
+            cursor: not-allowed;
+        }
+        .btn-jija-primary {
+            background-color: #5D9C59; /* สีเขียวม้า */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-jija-primary:hover {
+            background-color: #4A8446;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .text-jija-red {
+            color: #C0392B; /* สีแดงเลือด */
+        }
+        .text-jija-green {
+            color: #5D9C59; /* สีเขียวม้า */
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="p-6 text-center">
+        <a href="index.html">
+            <img src="Logojija.png" alt="โลโก้ร้านจิจะ" class="mx-auto w-60 md:w-60">
+        </a>
+    </header>
+
+    <main class="flex-grow container mx-auto p-4 md:p-100">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-center text-jija-green">เลือกเมนูของคุณ</h1>
+
+        <div class="space-y-8 max-w-2xl mx-auto">
+            <div class="card p-6">
+                <div class="flex flex-col md:flex-row items-center md:items-start mb-4">
+                    <img src="img/noodle.jpg" alt="หมี่ไก่ฉีก" class="w-32 h-32 object-cover rounded-lg mr-4 mb-4 md:mb-0">
+                    <div class="flex-grow">
+                        <h2 class="text-2xl font-semibold text-jija-red">หมี่ไก่ฉีก</h2>
+                        <p class="text-gray-600 text-sm mb-2">
+                            ในชุดจะมี หมี่นุ่ม + ไก่ฉีก + กระเทียมเจียว + ผักสด + น้ำพริกกากหมูสุดแซ่บ
+                        </p>
+                        <p class="text-xl font-bold text-jija-green mb-4">ชุดละ 50 บาท</p>
+                        <div class="flex items-center space-x-3">
+                            <button class="btn-quantity" data-item="noodle" data-action="minus">-</button>
+                            <span id="noodle-quantity" class="text-xl font-semibold w-10 text-center">0</span>
+                            <button class="btn-quantity" data-item="noodle" data-action="plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-6">
+                <div class="flex flex-col md:flex-row items-center md:items-start mb-4">
+                    <img src="img/chilli.jpg" alt="น้ำพริกกากหมู" class="w-32 h-32 object-cover rounded-lg mr-4 mb-4 md:mb-0">
+                    <div class="flex-grow">
+                        <h2 class="text-2xl font-semibold text-jija-red">น้ำพริกกากหมู</h2>
+                        <p class="text-gray-600 text-sm mb-2">
+                            หอม กรอบ เผ็ดกำลังดี ทานคู่กับอะไรก็อร่อย!
+                        </p>
+                        <p class="text-xl font-bold text-jija-green mb-4">ห่อละ 10 บาท</p>
+                        <div class="flex items-center space-x-3">
+                            <button class="btn-quantity" data-item="chilli" data-action="minus">-</button>
+                            <span id="chilli-quantity" class="text-xl font-semibold w-10 text-center">0</span>
+                            <button class="btn-quantity" data-item="chilli" data-action="plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-6 text-right">
+                <div class="flex justify-between items-center text-2xl font-bold mb-4">
+                    <span>ยอดรวม:</span>
+                    <span id="total-price" class="text-jija-red">0 บาท</span>
+                </div>
+                <button id="proceed-to-checkout" class="btn-jija-primary px-8 py-3 text-lg" disabled>
+                    ดำเนินการสั่งซื้อ
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-6 text-center text-gray-500 mt-12">
+        &copy; 2025 จิจะ หมี่ไก่ฉีก. All rights reserved.
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

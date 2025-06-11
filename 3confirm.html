@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ยืนยันที่อยู่ - จิจะ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Anuphan', sans-serif;
+            background-color: #FFF8E1; /* สีครีม */
+            color: #4B3832; /* สีข้อความเข้ม */
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #D1C4BB; /* สีน้ำตาลอ่อน */
+            background-color: #FDF5E6; /* สีครีมอ่อน */
+            transition: border-color 0.2s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #5D9C59; /* สีเขียวม้า */
+            box-shadow: 0 0 0 3px rgba(93, 156, 89, 0.2);
+        }
+        .btn-jija-primary {
+            background-color: #5D9C59; /* สีเขียวม้า */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-jija-primary:hover {
+            background-color: #4A8446;
+        }
+        .btn-jija-secondary {
+            background-color: #C0392B; /* สีแดงเลือด */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-jija-secondary:hover {
+            background-color: #A93226;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .text-jija-red {
+            color: #C0392B; /* สีแดงเลือด */
+        }
+        .text-jija-green {
+            color: #5D9C59; /* สีเขียวม้า */
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="p-6 text-center">
+        <a href="index.html">
+            <img src="Logojija.png" alt="โลโก้ร้านจิจะ" class="mx-auto w-32 md:w-40">
+        </a>
+    </header>
+
+    <main class="flex-grow container mx-auto p-6 md:p-10">
+        <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center text-jija-green">ยืนยันข้อมูลจัดส่ง</h1>
+
+        <div class="max-w-xl mx-auto card p-8">
+            <form id="order-form">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">ชื่อ:</label>
+                    <input type="text" id="name" class="form-input" required>
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">เบอร์โทร:</label>
+                    <input type="tel" id="phone" class="form-input" required pattern="[0-9]{10}">
+                </div>
+                <div class="mb-6">
+                    <label for="address" class="block text-gray-700 text-sm font-bold mb-2">ที่อยู่จัดส่ง:</label>
+                    <textarea id="address" class="form-input" rows="3" required></textarea>
+                    <p class="text-xs text-gray-500 mt-1">กรุณาระบุที่อยู่โดยละเอียด เช่น บ้านเลขที่ ซอย ถนน แขวง ตำบล</p>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">เลือกวิธีระบุตำแหน่ง:</label>
+                    <div class="flex items-center space-x-4 mb-2">
+                        <button type="button" id="pin-location-btn" class="btn-jija-secondary text-sm">
+                            <span class="mr-2">📍</span> ปักหมุดโลเคชั่น
+                        </button>
+                        <input type="text" id="id-address" class="form-input w-full" placeholder="หรือระบุ ID Address (ถ้ามี)">
+                    </div>
+                    <p id="location-status" class="text-sm text-gray-600 mt-2 italic hidden">
+                    </p>
+                </div>
+
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">วิธีการชำระเงิน:</label>
+                    <div class="space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="payment-method" value="ปลายทาง" class="form-radio text-jija-green" checked>
+                            <span class="ml-2">ปลายทาง (Cash on Delivery)</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="payment-method" value="โอนเงิน" class="form-radio text-jija-green">
+                            <span class="ml-2">โอนเงิน (Bank Transfer)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="transfer-details" class="card p-6 mt-6 hidden">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-jija-red">รายละเอียดการโอนเงิน</h3>
+                    <img src="img/qr-code.png" alt="QR Code สำหรับโอนเงิน" class="mx-auto w-48 mb-4 border rounded-lg p-2">
+                    <p class="text-center mb-4">ธนาคาร: (SCB) ไทพาณิชย์  <br> ชื่อบัญชี: ศิวกร  หลาบคำ  <br> เลขที่บัญชี: 511-462732-0 </p>
+                    <p class="text-center text-jija-red font-semibold">**กรุณาส่งสลิปโอนเงินทาง Facebook Messenger ของร้าน**</p>
+                    <p class="text-center text-sm text-gray-600 mt-2">เพื่อความรวดเร็วในการจัดส่ง</p>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button type="submit" id="confirm-order-btn" class="btn-jija-primary px-8 py-3 text-lg">
+                        ยืนยันสั่งซื้อ
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="p-6 text-center text-gray-500 mt-12">
+        &copy; 2025 จิจะ หมี่ไก่ฉีก. All rights reserved.
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
